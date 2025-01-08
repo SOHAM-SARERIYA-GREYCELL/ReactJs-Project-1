@@ -1,0 +1,103 @@
+{
+  "users": [
+    {
+      "id": "d177",
+      "name": "an",
+      "email": "an@an.on",
+      "phoneNo": "8527419633",
+      "maths": 96,
+      "physics": 96,
+      "chemistry": 74
+    },
+    {
+      "id": "9194",
+      "name": "s",
+      "email": "d@d.nbm",
+      "phoneNo": "8527419633",
+      "maths": 96,
+      "physics": 10,
+      "chemistry": 20
+    },
+    {
+      "id": "d68d",
+      "name": "sk",
+      "email": "sk@g.com",
+      "phoneNo": "4758757125",
+      "maths": 20,
+      "physics": 10,
+      "chemistry": 10
+    },
+    {
+      "id": "b73a",
+      "name": "ssadsa",
+      "email": "d@d.nbm",
+      "phoneNo": "7418529638",
+      "maths": 9,
+      "physics": 20,
+      "chemistry": 10
+    },
+    {
+      "id": "3fdf",
+      "name": "Jeny",
+      "email": "j@j.com",
+      "phoneNo": "7418529638",
+      "maths": 30,
+      "physics": 20,
+      "chemistry": 10
+    },
+    {
+      "id": "c310",
+      "name": "an",
+      "email": "an@an.com",
+      "phoneNo": "8527419633",
+      "maths": 20,
+      "physics": 10,
+      "chemistry": 20
+    },
+    {
+      "id": "4734",
+      "name": "soham",
+      "email": "an@an.ondf",
+      "phoneNo": "7418529630",
+      "maths": 19,
+      "physics": 20,
+      "chemistry": 20
+    },
+    {
+      "id": "751a",
+      "name": "soham",
+      "email": "d@d.nbm",
+      "phoneNo": "7418529638",
+      "maths": 20,
+      "physics": 40,
+      "chemistry": 50
+    },
+    {
+      "id": "f7d1",
+      "name": "wssdsd",
+      "email": "sdsd",
+      "phoneNo": "12dsaedw",
+      "maths": "20",
+      "physics": "20",
+      "chemistry": "20"
+    },
+    {
+      "id": "cb66",
+      "name": "S s",
+      "email": "sk@g.com",
+      "phoneNo": "0000005332",
+      "maths": "20",
+      "physics": "63",
+      "chemistry": "20"
+    },
+    {
+      "id": "bc72",
+      "name": "s",
+      "email": "s@sg.com",
+      "phoneNo": "7418521231",
+      "maths": "1",
+      "physics": "20",
+      "chemistry": "30"
+    }
+  ]
+}
