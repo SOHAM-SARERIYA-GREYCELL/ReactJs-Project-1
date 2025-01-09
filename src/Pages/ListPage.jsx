@@ -25,7 +25,7 @@ const ListPage = () => {
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   const fetchData = async () => {
     const data = await service.fetchUserDetails(url);

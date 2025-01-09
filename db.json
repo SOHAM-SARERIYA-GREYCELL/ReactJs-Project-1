@@ -2,10 +2,10 @@
   "users": [
     {
       "id": "d177",
-      "name": "an",
+      "name": "anand",
       "email": "an@an.on",
-      "phoneNo": "8527419633",
-      "maths": 96,
+      "phoneNo": "8527419631",
+      "maths": 11,
       "physics": 96,
       "chemistry": 7
     },
@@ -20,12 +20,12 @@
     },
     {
       "id": "d68d",
-      "name": "sk",
+      "name": "ssk",
       "email": "sk@g.com",
       "phoneNo": "4758757125",
       "maths": 20,
       "physics": 10,
-      "chemistry": 10
+      "chemistry": 100
     },
     {
       "id": "b73a",
@@ -42,33 +42,6 @@
       "email": "j@j.com",
       "phoneNo": "7418529638",
       "maths": 30,
-      "physics": 20,
-      "chemistry": 1
-    },
-    {
-      "id": "c310",
-      "name": "an",
-      "email": "an@an.com",
-      "phoneNo": "8527419633",
-      "maths": 20,
-      "physics": 10,
-      "chemistry": 20
-    },
-    {
-      "id": "4734",
-      "name": "soham",
-      "email": "an@an.ondf",
-      "phoneNo": "7418529630",
-      "maths": 19,
-      "physics": 20,
-      "chemistry": 20
-    },
-    {
-      "id": "262c",
-      "name": "asas",
-      "email": "asD@aa.as",
-      "phoneNo": "7485961232",
-      "maths": 20,
       "physics": 20,
       "chemistry": 10
     }

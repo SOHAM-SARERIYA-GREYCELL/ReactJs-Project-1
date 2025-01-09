@@ -45,15 +45,6 @@ class FormPage extends Component {
         super(props);
         this.state = {
             url: "http://localhost:3000/users",
-            user: {
-                id: null,
-                userName: '',
-                email: '',
-                phoneNo: '',
-                maths: '',
-                physics: '',
-                chemistry: ''
-            }
         };
     }
 
