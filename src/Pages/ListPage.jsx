@@ -12,7 +12,7 @@ import {
   Typography,
   Pagination,
 } from '@mui/material';
-import { data, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import service from '../User/service';
 import { addUser, deleteUser } from '../User/userSlice';
@@ -43,7 +43,6 @@ const ListPage = () => {
     const response = await service.deleteData(url, id);
     if (response) {
       dispatch(deleteUser(id));
-
       const remainingUsers = userData.filter((user) => user.id !== id);
       const newTotalPages = Math.ceil(remainingUsers.length / itemsPerPage);
       setTotalPages(newTotalPages);
@@ -54,12 +53,17 @@ const ListPage = () => {
     }
   };
 
-  const editData = (url, id) => {
+  const editData = (id) => {
     navigate(`/form/${id}`);
   };
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage);
+  };
+
+  const calculateResult = (maths, physics, chemistry) => {
+    const average = (maths + physics + chemistry) / 3;
+    return average < 33 ? 'Fail' : 'Pass';
   };
 
   const startIndex = (page - 1) * itemsPerPage;
@@ -148,10 +152,13 @@ const ListPage = () => {
                   align="center"
                   sx={{
                     fontWeight: 'bold',
-                    color: item.result === 'Pass' ? 'green' : 'red',
+                    color:
+                      calculateResult(item.maths, item.physics, item.chemistry) === 'Pass'
+                        ? 'green'
+                        : 'red',
                   }}
                 >
-                  {item.result}
+                  {calculateResult(item.maths, item.physics, item.chemistry)}
                 </TableCell>
                 <TableCell align="center">
                   <Button
@@ -159,7 +166,7 @@ const ListPage = () => {
                     color="primary"
                     size="small"
                     sx={{ marginRight: 1 }}
-                    onClick={() => editData(url, item.id)}
+                    onClick={() => editData(item.id)}
                   >
                     Edit
                   </Button>

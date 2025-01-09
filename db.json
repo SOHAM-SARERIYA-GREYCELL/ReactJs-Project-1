@@ -7,11 +7,11 @@
       "phoneNo": "8527419633",
       "maths": 96,
       "physics": 96,
-      "chemistry": 74
+      "chemistry": 7
     },
     {
       "id": "9194",
-      "name": "s",
+      "name": "soham k",
       "email": "d@d.nbm",
       "phoneNo": "8527419633",
       "maths": 96,
@@ -43,7 +43,7 @@
       "phoneNo": "7418529638",
       "maths": 30,
       "physics": 20,
-      "chemistry": 10
+      "chemistry": 1
     },
     {
       "id": "c310",
@@ -64,40 +64,13 @@
       "chemistry": 20
     },
     {
-      "id": "751a",
-      "name": "soham",
-      "email": "d@d.nbm",
-      "phoneNo": "7418529638",
+      "id": "262c",
+      "name": "asas",
+      "email": "asD@aa.as",
+      "phoneNo": "7485961232",
       "maths": 20,
-      "physics": 40,
-      "chemistry": 50
-    },
-    {
-      "id": "f7d1",
-      "name": "wssdsd",
-      "email": "sdsd",
-      "phoneNo": "12dsaedw",
-      "maths": "20",
-      "physics": "20",
-      "chemistry": "20"
-    },
-    {
-      "id": "cb66",
-      "name": "S s",
-      "email": "sk@g.com",
-      "phoneNo": "0000005332",
-      "maths": "20",
-      "physics": "63",
-      "chemistry": "20"
-    },
-    {
-      "id": "bc72",
-      "name": "s",
-      "email": "s@sg.com",
-      "phoneNo": "7418521231",
-      "maths": "1",
-      "physics": "20",
-      "chemistry": "30"
+      "physics": 20,
+      "chemistry": 10
     }
   ]
 }

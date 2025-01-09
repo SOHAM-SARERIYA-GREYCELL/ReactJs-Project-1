@@ -13,9 +13,9 @@ export class Service {
                     name: user.userName,
                     email: user.email,
                     phoneNo: user.phoneNo,
-                    maths: user.maths,
-                    physics: user.physics,
-                    chemistry: user.chemistry
+                    maths: parseFloat(user.maths),
+                    physics: parseFloat(user.physics),
+                    chemistry: parseFloat(user.chemistry)
                 }),
             });
 
@@ -47,22 +47,22 @@ export class Service {
     }
 
     deleteData = async (url, id) => {
-        // const result = confirm("Want to delete?");
-        // if (result) {
-        try {
-            const response = await fetch(`${url}/${id}`, {
-                method: 'DELETE'
-            })
-            if (!response.ok) {
-                throw new Error("Failed to post data");
+        const result = confirm("Want to delete?");
+        if (result) {
+            try {
+                const response = await fetch(`${url}/${id}`, {
+                    method: 'DELETE'
+                })
+                if (!response.ok) {
+                    throw new Error("Failed to post data");
+                }
+                return true
+            } catch (error) {
+                console.error("Error: ", error.message);
+                return false;
             }
-            return true
-        } catch (error) {
-            console.error("Error: ", error.message);
-            return false;
         }
     }
-    // }
 
 }
 const service = new Service();

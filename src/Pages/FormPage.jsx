@@ -39,7 +39,6 @@ const validate = (values) => {
     return errors;
 };
 
-
 class FormPage extends Component {
 
     constructor(props) {
@@ -54,8 +53,7 @@ class FormPage extends Component {
                 maths: '',
                 physics: '',
                 chemistry: ''
-            },
-            navigate: ''
+            }
         };
     }
 
@@ -74,7 +72,7 @@ class FormPage extends Component {
     async componentDidMount() {
         const { id, initialize } = this.props;
         if (id) {
-            const userDetails = await service.fetchUserDetails("http://localhost:3000/users", id);
+            const userDetails = await service.fetchUserDetails(this.state.url, id);
             initialize({
                 id: userDetails.id,
                 userName: userDetails.name,
@@ -87,51 +85,9 @@ class FormPage extends Component {
         }
     }
 
-    // async componentDidMount() {
-    //     const { id, navigate } = this.props;
-    //     this.setState({ id, navigate });
-    //     if (id) {
-    //         const userDetails = await service.fetchUserDetails(this.state.url, id);
-    //         this.setState({
-    //             user: {
-    //                 id: userDetails.id,
-    //                 userName: userDetails.name,
-    //                 email: userDetails.email,
-    //                 phoneNo: userDetails.phoneNo,
-    //                 maths: userDetails.maths,
-    //                 physics: userDetails.physics,
-    //                 chemistry: userDetails.chemistry,
-    //             }
-    //         });
-    //     }
-    // }
-
-    // addUserDetail = async (user) => {
-    //     try {
-    //         await service.addUserDetails(user, this.state.url);
-    //         this.state.navigate('/')
-    //     } catch (error) {
-    //         console.error("Error submitting user data:", error);
-    //     }
-    // }
-
-    // handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     this.setState({
-    //         user: {
-    //             ...this.state.user,
-    //             [name]: value
-    //         }
-    //     });
-    // };
-
     onSubmit = async (formValues) => {
-        const { id, navigate } = this.props;
-        if (id) {
-            await service.addUserDetails(formValues, `http://localhost:3000/users/${id}`);
-        } else {
-            await service.addUserDetails(formValues, "http://localhost:3000/users");
-        }
+        const { navigate } = this.props;
+        await service.addUserDetails(formValues, this.state.url);
         navigate('/');
     };
 
@@ -224,7 +180,7 @@ class FormPage extends Component {
 
 const ReduxFormPage = reduxForm({
     form: 'userForm',
-    validate,
+    validate
 })(FormPage);
 
 const FormPageWrapper = (props) => {
