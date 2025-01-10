@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Box, TextField, Button, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import service from '../User/service';
+import { addUserDetails, fetchUserDetails } from '../User/service';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 const nameRegex = /^[A-Za-z\s]+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,9 +44,6 @@ class FormPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            url: "http://localhost:3000/users",
-        };
     }
 
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
@@ -61,24 +59,15 @@ class FormPage extends Component {
     );
 
     async componentDidMount() {
-        const { id, initialize } = this.props;
+        const { id, initialize, fetchUserDetails } = this.props;
         if (id) {
-            const userDetails = await service.fetchUserDetails(this.state.url, id);
-            initialize({
-                id: userDetails.id,
-                userName: userDetails.name,
-                email: userDetails.email,
-                phoneNo: userDetails.phoneNo,
-                maths: userDetails.maths,
-                physics: userDetails.physics,
-                chemistry: userDetails.chemistry,
-            });
+            await fetchUserDetails(id, initialize);
         }
     }
 
     onSubmit = async (formValues) => {
-        const { navigate } = this.props;
-        await service.addUserDetails(formValues, this.state.url);
+        const { addUserDetails, navigate } = this.props;
+        await addUserDetails(formValues);
         navigate('/');
     };
 
@@ -114,7 +103,7 @@ class FormPage extends Component {
                     </Typography>
 
                     <Field
-                        name="userName"
+                        name="name"
                         component={this.renderTextField}
                         label="Name"
                         placeholder="Enter Your Name"
@@ -162,12 +151,24 @@ class FormPage extends Component {
                     >
                         Submit
                     </Button>
-
                 </Box>
             </Box>
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        id: ownProps.id,
+        userData: state.users.users,
+    }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchUserDetails: (id, initialize) => fetchUserDetails(dispatch, '', id, null, '', initialize),
+    addUserDetails: (user) => addUserDetails(user),
+});
+
 
 const ReduxFormPage = reduxForm({
     form: 'userForm',
@@ -180,4 +181,5 @@ const FormPageWrapper = (props) => {
     return <ReduxFormPage {...props} id={id} navigate={navigate} />;
 }
 
-export default FormPageWrapper;
+export default connect(mapStateToProps, mapDispatchToProps)(FormPageWrapper);
+

@@ -14,11 +14,10 @@ import {
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import service from '../User/service';
+import { deleteData, fetchUserDetails } from '../User/service';
 import { addUser, deleteUser } from '../User/userSlice';
 
 const ListPage = () => {
-  const url = "http://localhost:3000/users";
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((state) => state.users.users);
@@ -27,35 +26,9 @@ const ListPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 3;
 
-  const fetchData = async () => {
-    const data = await service.fetchUserDetails(url);
-    if (data) {
-      dispatch(addUser(data));
-      setTotalPages(Math.ceil(data.length / itemsPerPage));
-    }
-  };
-
   useEffect(() => {
-    fetchData();
+    fetchUserDetails(dispatch, addUser, 0, setTotalPages, itemsPerPage, null);
   }, [dispatch]);
-
-  const deleteData = async (url, id) => {
-    const response = await service.deleteData(url, id);
-    if (response) {
-      dispatch(deleteUser(id));
-      const remainingUsers = userData.filter((user) => user.id !== id);
-      const newTotalPages = Math.ceil(remainingUsers.length / itemsPerPage);
-      setTotalPages(newTotalPages);
-
-      if (page > newTotalPages && newTotalPages > 0) {
-        setPage(newTotalPages);
-      }
-    }
-  };
-
-  const editData = (id) => {
-    navigate(`/form/${id}`);
-  };
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage);
@@ -166,7 +139,7 @@ const ListPage = () => {
                     color="primary"
                     size="small"
                     sx={{ marginRight: 1 }}
-                    onClick={() => editData(item.id)}
+                    onClick={() => navigate(`/form/${item.id}`)}
                   >
                     Edit
                   </Button>
@@ -174,7 +147,16 @@ const ListPage = () => {
                     variant="outlined"
                     color="error"
                     size="small"
-                    onClick={() => deleteData(url, item.id)}
+                    onClick={() => deleteData(
+                      item.id,
+                      userData,
+                      dispatch,
+                      deleteUser,
+                      itemsPerPage,
+                      page,
+                      setTotalPages,
+                      setPage
+                    )}
                   >
                     Delete
                   </Button>
@@ -205,3 +187,4 @@ const ListPage = () => {
 };
 
 export default ListPage;
+
